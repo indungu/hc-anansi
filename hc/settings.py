@@ -12,14 +12,17 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 import os
 import warnings
+import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 HOST = "localhost"
 SECRET_KEY = "---"
 DEBUG = True
-ALLOWED_HOSTS = []
-DEFAULT_FROM_EMAIL = 'healthchecks@example.org'
+ALLOWED_HOSTS = ['0.0.0.0','localhost', 'hc-anansi-staging.herokuapp.com',
+                 'hc-anansi-production.herokuapp.com',
+                 'hc-ibutiti.herokuapp.com']
+DEFAULT_FROM_EMAIL = 'hc-anansi@null.net'
 USE_PAYMENTS = False
 
 
@@ -41,6 +44,7 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE = (
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -88,6 +92,7 @@ DATABASES = {
     }
 }
 
+
 # You can switch database engine to postgres or mysql using environment
 # variable 'DB'. Travis CI does this.
 if os.environ.get("DB") == "postgres":
@@ -108,6 +113,13 @@ if os.environ.get("DB") == "mysql":
             'NAME':     'hc',
             'TEST': {'CHARSET': 'UTF8'}
         }
+    }
+
+# If deploying to heroku, the database config will be populated automatically
+# Create an environment variable HEROKU_DEPLOYMENT in heroku and set it to 1
+if os.environ.get("HEROKU_DEPLOYMENT") == '1':
+    DATABASES = {
+        'default': dj_database_url.config()
     }
 
 LANGUAGE_CODE = 'en-us'
@@ -131,6 +143,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
 )
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 COMPRESS_OFFLINE = True
 
 EMAIL_BACKEND = "djmail.backends.default.EmailBackend"
