@@ -32,10 +32,10 @@
                     <span class="{% if not check.name %}unnamed{% endif %}">
                         {{ check.name|default:"unnamed" }}
                     </span>
-
+        
                     <code>{{ check.code }}</code>
                 </h2>
-
+        
                 <a
                     href="#"
                     class="btn remove-link check-menu-remove"
@@ -43,7 +43,7 @@
                     data-url="{% url 'hc-remove-check' check.code %}">
                     <span class="icon-close"></span>
                 </a>
-
+        
                 <table class="table">
                     <tr>
                         <th>Status</th>
