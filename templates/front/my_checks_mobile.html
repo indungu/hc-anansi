@@ -216,6 +216,23 @@
                             {% endfor %}
                         </td>
                     </tr>
+
+            {% endif %}
+            <tr>
+                <th>Period</th>
+                <td>{{ check.timeout|hc_duration }}</td>
+            </tr>
+            <tr>
+                <th>Grace Time</th>
+                <td>{{ check.grace|hc_duration }}</td>
+            </tr>
+            <tr>
+                <th>Last Ping</th>
+                <td>
+                    {% if check.last_ping %}
+                        {{ check.last_ping|naturaltime }}
+                    {% else %}
+                        Never
                     {% endif %}
                     <tr>
                         <th>Period</th>
