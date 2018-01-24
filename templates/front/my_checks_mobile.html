@@ -57,22 +57,21 @@
                             {% elif check.get_status == "up" %}
                                 <span class="label label-success">UP</span>
                             {% elif check.get_status == "down" %}
-                                <span class="label label-danger">DOWN</span>
-                            {% elif check.often %}
-                                <span class="label label-primary">OFTEN</span>
-                            {% endif %}
-                        </td>
-                    </tr>
-                    {% if check.tags %}
-                    <tr>
-                        <th>Tags</th>
-                        <td>
-                            {% for tag in check.tags_list %}
-                            <span class="label label-tag">{{ tag }}</span>
-                            {% endfor %}
-                        </td>
-                    </tr>
-
+                        <span class="label label-danger">DOWN</span>
+                    {% elif check.often %}
+                        <span class="label label-primary">OFTEN</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% if check.tags %}
+            <tr>
+                <th>Tags</th>
+                <td>
+                    {% for tag in check.tags_list %}
+                    <span class="label label-tag">{{ tag }}</span>
+                    {% endfor %}
+                </td>
+            </tr>
             {% endif %}
             <tr>
                 <th>Period</th>
