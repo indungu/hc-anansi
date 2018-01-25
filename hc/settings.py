@@ -22,7 +22,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', 'hc-anansi-staging.herokuapp.com',
                  'hc-anansi-production.herokuapp.com',
                  'hc-ibutiti.herokuapp.com']
-DEFAULT_FROM_EMAIL = 'hc-anansi@null.net'
 USE_PAYMENTS = False
 
 
@@ -136,7 +135,7 @@ SITE_ROOT = "http://localhost:8000"
 PING_ENDPOINT = SITE_ROOT + "/ping/"
 PING_EMAIL_DOMAIN = HOST
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static-collected')
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -153,6 +152,7 @@ EMAIL_HOST_PORT = 587
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = True
+
 
 # Slack integration -- override these in local_settings
 SLACK_CLIENT_ID = None
