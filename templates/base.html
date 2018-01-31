@@ -183,7 +183,7 @@
     })(window,document,"static.olark.com/jsclient/loader.js");
     /* Add configuration calls below this comment */
     olark.identify('7663-913-10-2758');
-    var name = "{{ request.user.username }}"
+    var name = "{{ request.user.email }}"
     olark('api.chat.updateVisitorNickname', {
 snippet: name
 });
