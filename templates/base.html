@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="{% static 'css/log.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/add_pushover.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/settings.css' %}" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
     {% endcompress %}
 </head>
 <body class="page-{{ page }}">
@@ -182,7 +183,12 @@
     k=y._={s:[],t:[+new Date],c:{},l:a};
     })(window,document,"static.olark.com/jsclient/loader.js");
     /* Add configuration calls below this comment */
-    olark.identify('7663-913-10-2758');</script>
+    olark.identify('7663-913-10-2758');
+    var name = "{{ request.user.username }}"
+    olark('api.chat.updateVisitorNickname', {
+snippet: name
+});
+</script>
     <!-- end olark code -->
 </body>
 </html>
