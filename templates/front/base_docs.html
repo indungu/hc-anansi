@@ -5,7 +5,17 @@
 <div class="row">
     <div class="col-sm-2">
 
-    <ul class="docs-nav">
+        <ul class="docs-nav">
+        <li {% if section == "overview" %} class="active" {% endif %}>
+            <a href="{% url 'hc-docs-overview' %}">Getting Started</a>
+            <ul>
+                <li><a href="{% url 'hc-docs-overview' %}#Cron jobs explained">What are cron jobs?</a></li>
+                <li><a href="{% url 'hc-docs-overview' %}#Why healthchecks">Why Healthchecks?</a></li>
+                <li><a href="{% url 'hc-docs-overview' %}#login">Login</a></li>
+                <li><a href="{% url 'hc-docs-overview' %}#Create check">Create a check</a></li>
+                <li><a href="{% url 'hc-docs-overview' %}#Schedule check">Schedule job checking</a></li>
+            </ul>
+        </li>
         <li {% if section == "home" %} class="active" {% endif %}>
             <a href="{% url 'hc-docs' %}">Executing a Ping</a>
             <ul>
