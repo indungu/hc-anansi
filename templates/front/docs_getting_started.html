@@ -12,87 +12,18 @@
         tips and demo videos are made with <span><i class="fa fa-heart-o"></i></span> just for you.
     </p>
     <hr>
-    <a name="Cron jobs explained"></a>
-    <h3>So... What are cron jobs anyway?</h3>
-    <p style="padding-top: 5px">
-        <a href="https://www.boonex.com/forums/topic/Cron-Job-Fun-Facts-.htm">Fun fact:</a> 
-        <span class="text-muted" style="line-height: 1.4em">
-            The name cron comes from the word "chronos", Greek for "time".
-        </span>
-        <br>
-        In the context of Unix based systems, a <b>Cron</b> is a time-based job scheduler. 
-        Amm... <span style="color:rgba(192, 19, 19, 0.753); font-size:16px"><i class="fa fa-meh-o"></i></span>
-    </p>
-    <p>
-        Simply put, there comes a time where you as user (or more certainly a systems administrator)
-        may want to run certain jobs on a at a partictular time and have the same job(s) recur on a 
-        prespecified schedule.
-    </p>
-    <p>
-        Say for instance you have written a script to automatically run backups of your local files (or that of
-        the users/clients whose systems you administrate over) to a shared network storage: and yes it is the right
-        thing to do. That is itself the definition of a Cron job.
-    </p>
-    <p>Below is a video to help you better understand what cron jobs are and how you can use <b>Cron</b> and
-    <b>Crontab</b> to create and schedule cron jobs.</p>
-    <div class="video-wrapper">
-        <iframe width="100%" height="480" src="https://www.youtube.com/embed/mEgSGUe2BvU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
+    
+    {% for tutorial in tutorials %}
+    <a name="{{ tutorial.title }}"></a>
+    <h3>{{ tutorial.title }}</h3>
+    <div>{{ tutorial.content|safe }}</div>
+    {% if tutorial.video_link %}
+        <div class="video-wrapper">
+            <iframe width="100%" height="400" src="{{ tutorial.video_link }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    {% endif %}
     <hr>
-    <a name="Why healthchecks"></a>
-    <h3>Why Healthchecks?</h3>
-    <p>
-        The whole idea of cron jobs is awesome, that is a fact. You might, however, want to be sure that your jobs 
-        did indeed happen and at the intended time, right?
-        <br>
-        That's were we come in. 
-    </p>
-    <hr>
-    <a name="login"></a>
-    <h4><b>Login</b></h4>
-    <p>We believe in simplicity and as you will notice, we have worked to ensure that your onboarding onto our 
-        platform is seamless. All you need to sign up is just provide the email you want to use and click login.
-        Quick, easy and most certianly secure.
-    </p>
-    <p>Check out the video below just to see how this works.</p>
-    <div class="video-wrapper">
-        <iframe width="100%" height="400" src="https://player.vimeo.com/video/253590718" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-    </div>
-    <hr>
-    <a name="Create check"></a>
-    <h4><b>Create check</b></h4>
-    <p>
-        Creating a check is quite straight forward as well. In the following video, notice how one can set an espected period
-        which they (you) expect their job to run. There is also a slider for setting a grace period. The grace period implies 
-        that the job has not yet ran in the set timeout but is expected to run after some duration. Simply put, due a number of 
-        factors, the job might be late to register the check ergo the need for a grace period before you are notified the check 
-        gone down.
-    </p>
-    <p>Sounds nice, huh?</p>
-    <br>
-    <p>Check out the video below just to see how this works.</p>
-    <div class="video-wrapper">
-        <iframe width="100%" height="400" src="https://player.vimeo.com/video/253590679" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-    </div>
-    <hr>
-    <a name="Schedule check"></a>
-    <h4><b>Schedule check</b></h4>
-    <p>
-        Once a check is created you can use your ping url for literally anything from a basic shell script,
-        a basic crotab or even checking running webapp services.
-    </p>
-    <p>
-        In the example below, the ping url is used as a direct http request made from within a simple bash script
-        using <b>curl</b>. This makes for a simple demonstration of the vast capabilities check monitoring brings.
-    </p>
-    <br>
-    <p>Check out the video below just to see how this works.</p>
-    <div class="video-wrapper">
-        <iframe width="100%" height="400" src="https://player.vimeo.com/video/253775295" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-    </div>
-
-    <hr>
+    {% endfor %}
     <p>Check out the other segments of the documentation for a more in depth understanding.</p>
-
 </div>
 {% endblock %}
