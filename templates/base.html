@@ -171,6 +171,10 @@
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     {% endcompress %}
     {% endblock %}
+    <!-- Session user email for Live Chat ID -->
+    <script type="text/javascript">
+        var name = "{{ request.user.email }}"
+    </script>
     <!-- olark widget -->
     <script src="{% static 'js/olark.js' %}"></script>
 </body>
